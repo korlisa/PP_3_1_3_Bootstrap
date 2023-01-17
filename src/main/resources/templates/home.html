@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<title>Home</title>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<section>
+    <h2 style="padding-top: 10%;" class="text-center">Welcome to home page</h2>
+    <div class="d-flex justify-content-center">
+        <p sec:authorize="hasRole('ADMIN')">
+            <button type="button" class="btn btn-light">
+            <a href="/admin">Admin panel</a>
+            </button>
+        </p>
+    </div>
+    <div class="d-flex justify-content-center">
+        <p sec:authorize="hasAnyRole('USER', 'ADMIN')">
+            <button type="button" class="btn btn-outline-dark">
+            <a href="/user">User profile </a>
+            </button>
+        </p>
+    </div>
+    <div class="d-flex justify-content-center">
+
+        <p sec:authorize="isAuthenticated()">
+            <button type="button" class="btn btn-light">
+                <a href="/logout">Logout</a>
+            </button>
+        </p>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <p sec:authorize="!isAuthenticated()">
+            <button type="button" class="btn btn-outline-dark">
+            <a href="/login">Sign in! </a>
+            </button>
+        </p>
+    </div>
+
+</section>
+</body>
+</html>
