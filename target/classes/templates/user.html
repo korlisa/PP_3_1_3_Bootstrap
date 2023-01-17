@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>User Page</title>
+</head>
+<body class="bg-light">
+<!--Header-->
+<header>
+    <div class="container-fluid">
+        <div class="row bg-dark">
+            <div class="col-4">
+                <div class="text-white mt-2">
+                    <span class="text-white h6">
+                        <strong>
+                            <th:block th:text="${user.getUsername()}"></th:block>
+                        </strong>
+                    </span>
+                    <th:block>with roles:</th:block>
+                    <th:block th:each="role : ${user.getRoles()}">
+                        <th:block th:if="${role.name}=='ROLE_ADMIN'">Admin</th:block>
+                        <th:block th:if="${role.name}=='ROLE_USER'">User</th:block>
+                    </th:block>
+                </div>
+            </div>
+            <div class="col-7"></div>
+            <div class="col-1">
+                <div class="btn">
+                    <a class="text-secondary nav-item" th:href="@{/logout}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!--Navigation bar-->
+<div class="row h-600">
+    <div class="col-2 sidebar container-fluid bg-white text-center" style="height: 100vh">
+        <div class="nav flex-colum nav-pills pt-4" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <div class="container">
+                <ul class="nav nav-pills flex-column">
+                    <th:block th:each="role : ${user.getRoles()}">
+                        <th:block th:if="${role.name}=='ROLE_ADMIN'">
+                            <li class="nav-item">
+
+                                <a class="nav-link" href="/admin">Admin</a>
+                            </li>
+                        </th:block>
+                    </th:block>
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#userPanel">User</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-10 bg-light">
+        <div class="h1 p-3">User information-page</div>
+        <nav class="card col-11 px-2">
+            <div class="card">
+                <h5 class="card-header">About user</h5>
+                <div class="card-body text-center">
+                    <div class="container-fluid">
+                        <table class="table table-striped">
+
+                            <thead class="text-black">
+                            <tr>
+                                <th>ID</th>
+                                <th>First name</th>
+                                <th>Last name</th>
+                                <th scope="col">Age</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Role</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:scope="row">
+                                <td th:scope="row" th:utext="${user.getId()}">ID</td>
+                                <td th:scope="row" th:utext="${user.getFirstName()}">First Name</td>
+                                <td th:scope="row" th:utext="${user.getLastName()}">Last Name</td>
+                                <td th:scope="row" th:utext="${user.getAge()}">Age</td>
+                                <td th:scope="row" th:utext="${user.getUsername()}">Email</td>
+
+                                <td th:scope="row">
+                                    <th:block th:each="role : ${user.getRoles()}">
+                                        <th:block th:text="${role.getName}"></th:block>
+                                    </th:block>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    
+    </nav>
+</div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>
