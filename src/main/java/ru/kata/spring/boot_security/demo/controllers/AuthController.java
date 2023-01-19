@@ -35,7 +35,7 @@ public class AuthController {
 
     @GetMapping("/register")
     public String registrationAdmin(@ModelAttribute("user") User user, Model model){
-        model.addAttribute("listOfRoles", roleService.listRoles());
+        model.addAttribute("listOfRoles", roleService.getRoles());
         return "registration";
     }
 
