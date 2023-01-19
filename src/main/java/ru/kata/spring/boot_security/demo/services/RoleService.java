@@ -18,9 +18,6 @@ public class RoleService {
         this.roleRepository = roleRepository;
     }
 
-    public List<Role> listRoles() {
-        return roleRepository.findAll();
-    }
     public List<Role> getRoles() {
         return roleRepository.findAll();
     }
