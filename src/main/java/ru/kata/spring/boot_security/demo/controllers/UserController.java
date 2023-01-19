@@ -15,6 +15,7 @@ import ru.kata.spring.boot_security.demo.services.UserService;
 public class UserController {
     private final UserService userService;
 
+    @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
