@@ -8,8 +8,6 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@NamedEntityGraph(name = "User.role",
-        attributeNodes = @NamedAttributeNode("roles"))
 @Data
 @Table(name = "users")
 public class User implements UserDetails {

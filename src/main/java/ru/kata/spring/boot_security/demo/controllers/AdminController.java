@@ -103,6 +103,7 @@ public class AdminController {
         user.setLastName(user.getLastName());
         user.setAge(user.getAge());
         user.setUsername(user.getUsername());
+
 //        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(roles);
         userService.createOrUpdate(user);
