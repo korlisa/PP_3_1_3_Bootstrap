@@ -21,6 +21,7 @@ public class AuthController {
     private final UserService userService;
     private final RoleService roleService;
 
+    @Autowired
     public AuthController(PasswordEncoder passwordEncoder, UserService userService, RoleService roleService) {
         this.passwordEncoder = passwordEncoder;
         this.userService = userService;
